@@ -108,17 +108,73 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 12px 0;
+  margin: 14px 0;
   font-size: 16px;
 }
 
-.info-item i {
-  font-size: 22px;
-  color: #2e7d32; /* hijau islami */
-  min-width: 24px;
+.info-item img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
 }
 
 .info-item:hover {
-  transform: translateX(5px);
+  transform: translateX(6px);
   transition: 0.3s;
+}
+.logo-utama {
+  width: 200px;       /* atur sesuai kebutuhan */
+  display: block;
+  margin: 20px auto;
+  animation: floatLogo 3s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.judul-psb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  animation: floatText 3s ease-in-out infinite;
+}
+
+.judul-psb h1 {
+  font-size: 26px;
+  margin: 0;
+  text-align: center;
+}
+
+.ikon-bintang {
+  width: 26px;
+  height: 26px;
+}
+
+@keyframes floatText {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.ikon-bintang {
+  animation: spinStar 6s linear infinite;
+}
+
+@keyframes spinStar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
