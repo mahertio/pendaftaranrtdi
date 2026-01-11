@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>PSB Rumah Qur'an Diroosatul Ilmi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="Logo Rumah Qur'an">
+    <h1>PENERIMAAN SANTRI BARU</h1>
+    <h2>ANGKATAN PERTAMA – KHUSUS PUTRI</h2>
+</header>
+
+<section class="card">
+    <h3>Program Unggulan</h3>
+    <ul>
+        <li>Tahfidzul Qur'an</li>
+        <li>Bahasa Arab</li>
+        <li>Keputrian</li>
+    </ul>
+</section>
+
+<section class="card">
+    <h3>Visi</h3>
+    <p>
+        Mewujudkan pendidikan berkualitas, bermanhaj salafusshalih
+        dalam naungan cahaya Al-Qur'an dan sunnah shahihah.
+    </p>
+</section>
+
+<section class="card">
+    <h3>Misi</h3>
+    <p>
+        Membentuk santriwati shalihah yang berakidah lurus,
+        beribadah benar, berakhlak mulia, mandiri, terampil,
+        serta berprestasi dalam hafalan Al-Qur'an, Bahasa Arab,
+        dan akademik berkualitas.
+    </p>
+</section>
+
+<section class="card">
+    <h3>Fasilitas</h3>
+    <ul>
+        <li>Ruangan full AC</li>
+        <li>Ranjang tidur</li>
+        <li>Kasur dan perlengkapan lainnya</li>
+    </ul>
+</section>
+
+<section class="card">
+    <h3>Syarat Pendaftaran</h3>
+    <ul>
+        <li>Muslimah</li>
+        <li>Sehat jasmani dan rohani</li>
+        <li>Bersedia mengikuti program</li>
+        <li>Berkelakuan baik</li>
+    </ul>
+</section>
+
+<section class="card">
+    <h3>Biaya</h3>
+    <p>
+        Uang masuk: <b>Rp3.000.000</b><br>
+        (sudah termasuk 1 seragam dan SPP Juli)<br><br>
+        SPP: <b>Rp750.000 / bulan</b>
+    </p>
+</section>
+
+<section class="card">
+    <h3>Alamat</h3>
+    <p>
+        Jl. Raya Pebayuran RT 05 RW 03<br>
+        KP Sayuran, Kel. Kertasari<br>
+        Kec. Pebayuran, Kab. Bekasi<br>
+        Jawa Barat 17710
+    </p>
+</section>
+
+<section class="card">
+    <h3>Informasi Pendaftaran</h3>
+    <p>
+        KA EVI: 0838 7216 8993<br>
+        KA LARAS: 0815 4576 2297
+    </p>
+
+    <a class="btn"
+       href="https://wa.me/6283872168993"
+       target="_blank">
+       Daftar Sekarang via WhatsApp
+    </a>
+</section>
+
+<section class="card">
+    <h3>Form Pendaftaran Santri</h3>
+
+    <form id="formDaftar">
+        <input type="text" name="nama" placeholder="Nama Lengkap" required>
+        <input type="text" name="tempat_lahir" placeholder="Tempat Lahir" required>
+        <input type="date" name="tanggal_lahir" required>
+
+        <select name="jk" required>
+            <option value="">Jenis Kelamin</option>
+            <option value="Perempuan">Perempuan</option>
+        </select>
+
+        <textarea name="alamat" placeholder="Alamat Lengkap" required></textarea>
+
+        <input type="text" name="asal_sekolah" placeholder="Asal Sekolah" required>
+        <input type="text" name="orangtua" placeholder="Nama Orang Tua" required>
+        <input type="tel" name="hp" placeholder="Nomor HP" required>
+
+        <button type="submit">Kirim Pendaftaran</button>
+    </form>
+
+    <p id="status"></p>
+</section>
+<footer>
+    <p>© Rumah Qur'an Diroosatul Ilmi</p>
+</footer>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbw-JSoJB5xND2SN4L1lWSixtG-VyNi6LBxGAlbcDPAJkjlXY3wWm0QvegO3o7QgY1ytoQ/exec";
+
+document.getElementById("formDaftar").addEventListener("submit", e => {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = {
+        nama: form.nama.value,
+        tempat_lahir: form.tempat_lahir.value,
+        tanggal_lahir: form.tanggal_lahir.value,
+        jk: form.jk.value,
+        alamat: form.alamat.value,
+        asal_sekolah: form.asal_sekolah.value,
+        orangtua: form.orangtua.value,
+        hp: form.hp.value
+    };
+
+    fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(data)
+    })
+    .then(() => {
+        document.getElementById("status").innerText =
+          "✅ Pendaftaran berhasil! Kami akan menghubungi Anda.";
+        form.reset();
+    })
+    .catch(() => {
+        document.getElementById("status").innerText =
+          "❌ Gagal mengirim data.";
+    });
+});
+</script>
+</body>
+</html>
